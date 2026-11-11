@@ -1,0 +1,1 @@
+Leave empty if the API has no such field. The server then counts as online whenever the API responds.

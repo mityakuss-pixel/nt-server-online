@@ -1,0 +1,108 @@
+.ntServerOnline-list
+{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ntServerOnline-server
+{
+	min-width: 0;
+}
+
+.ntServerOnline-total
+{
+	grid-column: 1 / -1;
+	border-top: @xf-borderSize solid @xf-borderColorLight;
+}
+
+.ntServerOnline-main
+{
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.ntServerOnline-status
+{
+	flex: none;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: @xf-ntServerOnlineOfflineColor;
+
+	.ntServerOnline-server.is-online &
+	{
+		background: @xf-ntServerOnlineOnlineColor;
+	}
+}
+
+.ntServerOnline-name
+{
+	flex: 1 1 auto;
+	min-width: 0;
+	.m-overflowEllipsis();
+}
+
+.ntServerOnline-count
+{
+	flex: none;
+	font-weight: @xf-fontWeightHeavy;
+	font-variant-numeric: tabular-nums;
+
+	.ntServerOnline-server.is-offline &
+	{
+		font-weight: @xf-fontWeightNormal;
+		color: @xf-textColorMuted;
+	}
+}
+
+.ntServerOnline-max
+{
+	font-weight: @xf-fontWeightNormal;
+	color: @xf-textColorMuted;
+}
+
+.ntServerOnline-bar
+{
+	height: @xf-ntServerOnlineBarHeight;
+	margin-top: 8px;
+	border-radius: @xf-ntServerOnlineBarHeight;
+	background: @xf-borderColorLight;
+	overflow: hidden;
+}
+
+.ntServerOnline-barFill
+{
+	display: block;
+	height: 100%;
+	border-radius: inherit;
+	background: @xf-ntServerOnlineBarColor;
+}
+
+.ntServerOnline-address
+{
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-top: 6px;
+	font-size: @xf-fontSizeSmall;
+	color: @xf-textColorMuted;
+}
+
+.ntServerOnline-addressText
+{
+	min-width: 0;
+	.m-overflowEllipsis();
+}
+
+.ntServerOnline-copy
+{
+	flex: none;
+	color: inherit;
+
+	&:hover
+	{
+		color: @xf-linkHoverColor;
+		text-decoration: none;
+	}
+}

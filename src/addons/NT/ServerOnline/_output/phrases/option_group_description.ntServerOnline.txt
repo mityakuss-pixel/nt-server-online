@@ -1,0 +1,1 @@
+Options for the game server online widget.

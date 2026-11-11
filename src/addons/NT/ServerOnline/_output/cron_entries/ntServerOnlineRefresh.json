@@ -1,0 +1,17 @@
+{
+    "cron_class": "NT\\ServerOnline\\Cron\\Refresh",
+    "cron_method": "run",
+    "run_rules": {
+        "minutes": [
+            -1
+        ],
+        "hours": [
+            -1
+        ],
+        "day_type": "dom",
+        "dom": [
+            -1
+        ]
+    },
+    "active": true
+}

@@ -1,0 +1,1 @@
+The button is shown under the server list. Leave both fields empty to hide it.

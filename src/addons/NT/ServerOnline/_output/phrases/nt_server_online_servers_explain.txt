@@ -1,0 +1,1 @@
+One row per server. <b>API URL</b> is the address that returns the server status as JSON. The name is optional: when it is empty, the name from the API response is used. Fill in the path only if the server data is nested inside the response, for example <code>data.servers.0</code>.

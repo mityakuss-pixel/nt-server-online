@@ -1,0 +1,1 @@
+Several values can be separated with commas. Leave empty to treat any value other than <code>false</code>, <code>0</code>, <code>off</code> or <code>offline</code> as online.

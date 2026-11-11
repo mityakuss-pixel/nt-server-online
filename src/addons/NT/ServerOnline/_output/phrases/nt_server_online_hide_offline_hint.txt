@@ -1,0 +1,1 @@
+If every server is offline, the widget is not shown at all.

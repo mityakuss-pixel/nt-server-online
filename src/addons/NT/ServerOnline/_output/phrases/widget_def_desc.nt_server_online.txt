@@ -1,0 +1,1 @@
+Shows the current player count of one or more game servers, read from a JSON API.

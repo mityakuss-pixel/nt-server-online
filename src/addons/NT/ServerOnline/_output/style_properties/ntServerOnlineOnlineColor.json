@@ -1,0 +1,14 @@
+{
+    "group_name": "ntServerOnline",
+    "title": "Online indicator color",
+    "description": "",
+    "property_type": "value",
+    "css_components": [],
+    "value_type": "color",
+    "value_parameters": "",
+    "has_variations": false,
+    "depends_on": "",
+    "value_group": "",
+    "property_value": "@xf-successFeatureColor",
+    "display_order": 10
+}

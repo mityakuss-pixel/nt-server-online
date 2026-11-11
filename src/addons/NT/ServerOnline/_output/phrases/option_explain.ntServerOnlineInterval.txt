@@ -1,0 +1,1 @@
+How often the widget data is requested from the server API, in seconds. The data is refreshed in the background by a cron entry, so page views never wait for the API.

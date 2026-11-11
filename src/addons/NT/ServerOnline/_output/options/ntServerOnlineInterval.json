@@ -1,0 +1,13 @@
+{
+    "edit_format": "spinbox",
+    "edit_format_params": "min=60\nmax=3600\nstep=10\nunits=sec",
+    "data_type": "positive_integer",
+    "sub_options": [],
+    "validation_class": "",
+    "validation_method": "",
+    "advanced": false,
+    "default_value": "60",
+    "relations": {
+        "ntServerOnline": 10
+    }
+}

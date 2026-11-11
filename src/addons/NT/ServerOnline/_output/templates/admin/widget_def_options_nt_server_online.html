@@ -1,0 +1,104 @@
+<hr class="formRowSep" />
+
+<xf:formrow rowtype="input"
+	label="{{ phrase('nt_server_online_servers') }}"
+	explain="{{ phrase('nt_server_online_servers_explain') }}">
+
+	<ul class="listPlain inputGroup-container">
+		<xf:foreach loop="$options.servers" key="$counter" value="$server">
+			<li class="inputGroup">
+				<xf:textbox name="options[servers][{$counter}][url]" value="{$server.url}"
+					placeholder="{{ phrase('nt_server_online_api_url') }}" dir="ltr" style="flex: 0 0 50%" />
+				<span class="inputGroup-splitter"></span>
+				<xf:textbox name="options[servers][{$counter}][name]" value="{$server.name}"
+					placeholder="{{ phrase('nt_server_online_name_optional') }}" size="16" />
+				<span class="inputGroup-splitter"></span>
+				<xf:textbox name="options[servers][{$counter}][root]" value="{$server.root}"
+					placeholder="{{ phrase('nt_server_online_path_optional') }}" size="16" dir="ltr" />
+			</li>
+		</xf:foreach>
+
+		<li class="inputGroup" data-xf-init="field-adder" data-increment-format="options[servers][{counter}]">
+			<xf:textbox name="options[servers][{$nextCounter}][url]"
+				placeholder="{{ phrase('nt_server_online_api_url') }}" dir="ltr" style="flex: 0 0 50%" />
+			<span class="inputGroup-splitter"></span>
+			<xf:textbox name="options[servers][{$nextCounter}][name]"
+				placeholder="{{ phrase('nt_server_online_name_optional') }}" size="16" />
+			<span class="inputGroup-splitter"></span>
+			<xf:textbox name="options[servers][{$nextCounter}][root]"
+				placeholder="{{ phrase('nt_server_online_path_optional') }}" size="16" dir="ltr" />
+		</li>
+	</ul>
+</xf:formrow>
+
+<xf:if is="$servers is not empty">
+	<xf:formrow label="{{ phrase('nt_server_online_last_response') }}">
+		<ul class="listPlain">
+			<xf:foreach loop="$servers" value="$server">
+				<li>
+					<b>{$server.name}</b>:
+					<xf:if is="!$server.checked">
+						{{ phrase('nt_server_online_not_requested_yet') }}
+					<xf:elseif is="$server.errorPhrase" />
+						{$server.errorPhrase}
+					<xf:elseif is="$server.online" />
+						{$server.players|number}<xf:if is="$server.max"> / {$server.max|number}</xf:if>
+					<xf:else />
+						{{ phrase('nt_server_online_offline') }}
+					</xf:if>
+					<xf:if is="$server.checked">
+						<span class="u-muted">&middot; <xf:date time="{$server.checked}" /></span>
+					</xf:if>
+				</li>
+			</xf:foreach>
+		</ul>
+	</xf:formrow>
+</xf:if>
+
+<hr class="formRowSep" />
+
+<xf:textboxrow name="options[path_players]" value="{$options.path_players}" dir="ltr"
+	label="{{ phrase('nt_server_online_field_players') }}"
+	explain="{{ phrase('nt_server_online_field_players_explain') }}" />
+
+<xf:textboxrow name="options[path_max]" value="{$options.path_max}" dir="ltr"
+	label="{{ phrase('nt_server_online_field_max') }}" />
+
+<xf:textboxrow name="options[path_name]" value="{$options.path_name}" dir="ltr"
+	label="{{ phrase('nt_server_online_field_name') }}" />
+
+<xf:textboxrow name="options[path_address]" value="{$options.path_address}" dir="ltr"
+	label="{{ phrase('nt_server_online_field_address') }}" />
+
+<xf:textboxrow name="options[path_state]" value="{$options.path_state}" dir="ltr"
+	label="{{ phrase('nt_server_online_field_state') }}"
+	explain="{{ phrase('nt_server_online_field_state_explain') }}" />
+
+<xf:textboxrow name="options[state_online]" value="{$options.state_online}" dir="ltr"
+	label="{{ phrase('nt_server_online_state_online_value') }}"
+	explain="{{ phrase('nt_server_online_state_online_value_explain') }}" />
+
+<hr class="formRowSep" />
+
+<xf:checkboxrow label="{{ phrase('nt_server_online_display') }}">
+	<xf:option name="options[show_status]" selected="$options.show_status"
+		label="{{ phrase('nt_server_online_show_status') }}" />
+	<xf:option name="options[show_max]" selected="$options.show_max"
+		label="{{ phrase('nt_server_online_show_max') }}" />
+	<xf:option name="options[show_bar]" selected="$options.show_bar"
+		label="{{ phrase('nt_server_online_show_bar') }}" />
+	<xf:option name="options[show_address]" selected="$options.show_address"
+		label="{{ phrase('nt_server_online_show_address') }}" />
+	<xf:option name="options[show_total]" selected="$options.show_total"
+		label="{{ phrase('nt_server_online_show_total') }}" />
+	<xf:option name="options[hide_offline]" selected="$options.hide_offline"
+		label="{{ phrase('nt_server_online_hide_offline') }}"
+		hint="{{ phrase('nt_server_online_hide_offline_hint') }}" />
+</xf:checkboxrow>
+
+<xf:textboxrow name="options[link_text]" value="{$options.link_text}"
+	label="{{ phrase('nt_server_online_link_text') }}" />
+
+<xf:textboxrow name="options[link_url]" value="{$options.link_url}" dir="ltr"
+	label="{{ phrase('nt_server_online_link_url') }}"
+	explain="{{ phrase('nt_server_online_link_explain') }}" />

@@ -1,0 +1,6 @@
+{
+    "icon": "fa-signal",
+    "display_order": 5000,
+    "advanced": false,
+    "debug_only": false
+}

@@ -1,0 +1,61 @@
+<xf:css src="nt_server_online.less" />
+
+<div class="block ntServerOnline"{{ widget_data($widget) }}>
+	<div class="block-container">
+		<h3 class="block-minorHeader">{$title}</h3>
+		<ul class="block-body ntServerOnline-list">
+			<xf:foreach loop="$servers" value="$server">
+				<li class="block-row ntServerOnline-server {{ $server.online ? 'is-online' : 'is-offline' }}">
+					<div class="ntServerOnline-main">
+						<xf:if is="$options.show_status">
+							<span class="ntServerOnline-status" aria-hidden="true"></span>
+						</xf:if>
+						<span class="ntServerOnline-name">{$server.name}</span>
+						<span class="ntServerOnline-count">
+							<xf:if is="$server.online">
+								{$server.players|number}<xf:if is="$options.show_max AND $server.max"><span class="ntServerOnline-max"> / {$server.max|number}</span></xf:if>
+							<xf:else />
+								{{ phrase('nt_server_online_offline') }}
+							</xf:if>
+						</span>
+					</div>
+
+					<xf:if is="$options.show_bar AND $server.online AND $server.max">
+						<div class="ntServerOnline-bar" role="progressbar"
+							aria-label="{{ phrase('nt_server_online_players')|for_attr }}"
+							aria-valuemin="0" aria-valuemax="{$server.max}" aria-valuenow="{$server.players}">
+							<span class="ntServerOnline-barFill" style="width: {$server.percent}%"></span>
+						</div>
+					</xf:if>
+
+					<xf:if is="$options.show_address AND $server.address">
+						<div class="ntServerOnline-address">
+							<span class="ntServerOnline-addressText">{$server.address}</span>
+							<a href="javascript:" class="ntServerOnline-copy is-hidden"
+								data-xf-init="copy-to-clipboard tooltip"
+								data-copy-text="{$server.address}"
+								data-success="{{ phrase('nt_server_online_address_copied')|for_attr }}"
+								title="{{ phrase('nt_server_online_copy_address')|for_attr }}"
+								aria-label="{{ phrase('nt_server_online_copy_address')|for_attr }}"><xf:fa icon="fa-copy" /></a>
+						</div>
+					</xf:if>
+				</li>
+			</xf:foreach>
+
+			<xf:if is="$options.show_total AND count($servers) > 1">
+				<li class="block-row ntServerOnline-total">
+					<dl class="pairs pairs--justified">
+						<dt>{{ phrase('nt_server_online_total') }}</dt>
+						<dd>{$total|number}</dd>
+					</dl>
+				</li>
+			</xf:if>
+		</ul>
+
+		<xf:if is="$options.link_url AND $options.link_text">
+			<div class="block-footer">
+				<span class="block-footer-controls"><xf:button href="{$options.link_url}" class="button--link">{$options.link_text}</xf:button></span>
+			</div>
+		</xf:if>
+	</div>
+</div>

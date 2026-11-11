@@ -1,0 +1,356 @@
+{
+    "cron_entry.ntServerOnlineRefresh.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d4406e642a70a6ca3cb57b1c234c2547"
+    },
+    "nt_server_online_address_copied.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "497b1ae42507ded6f0cb4703ea42c66c"
+    },
+    "nt_server_online_api_url.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "1f37743cdcdef44b3d80e8c166c6c3ce"
+    },
+    "nt_server_online_check_failed_x.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "10fdab4fed13ee6a0c6c1eab3de4997a"
+    },
+    "nt_server_online_copy_address.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "7eb63ff7711e143c1e22ca5990be4bf6"
+    },
+    "nt_server_online_display.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "b9987a246a537f4fe86f1f2e3d10dbdb"
+    },
+    "nt_server_online_error_field.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "00ebaf9323742fb141b340b8ab6a8727"
+    },
+    "nt_server_online_error_http.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "945c4a57cf0b33df2c8f2873df85d00a"
+    },
+    "nt_server_online_error_json.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "e25c5a05389179d7dc903fc0eaf55899"
+    },
+    "nt_server_online_error_request.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "2800943f9ca3d66ab40483135725a091"
+    },
+    "nt_server_online_field_address.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "62891c723452e8094e1fcc1d9aa27dcf"
+    },
+    "nt_server_online_field_max.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "5a1ecb68b28455a732eccf139f84fc6d"
+    },
+    "nt_server_online_field_name.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "8b3f9ad5992fcbcdccc7a5309c40456d"
+    },
+    "nt_server_online_field_players.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "267faeb95ede5e935db82e79cff51fd0"
+    },
+    "nt_server_online_field_players_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "04e789c5bc038f63b577d9ee6f245356"
+    },
+    "nt_server_online_field_state.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "a4075fa7a3faf0c4eafea13573e31372"
+    },
+    "nt_server_online_field_state_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "7e78b0ef91c380bbaadd23b03231ec55"
+    },
+    "nt_server_online_hide_offline.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "a823e803bb91c10047445c27f17968ef"
+    },
+    "nt_server_online_hide_offline_hint.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "4d132a9d661151d9084d01f87b3b60b3"
+    },
+    "nt_server_online_invalid_url_x.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "9e8cef27dad7effd434d5b44904e7947"
+    },
+    "nt_server_online_last_response.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d3f1ed6424dc6c87a182801a8a8e3556"
+    },
+    "nt_server_online_link_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "5e32696490f499f6c62f78b4ba784ef9"
+    },
+    "nt_server_online_link_text.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "111082bb18b636c4493e0370dce09f00"
+    },
+    "nt_server_online_link_url.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "15fcc7ab64c322448d20454419aa93ee"
+    },
+    "nt_server_online_name_optional.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "c459712e331804deceb572918d4670f0"
+    },
+    "nt_server_online_no_servers.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "c0db90bf0183cc3ccc6b7a611cfe3388"
+    },
+    "nt_server_online_not_requested_yet.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "19ff29a198178f0bbc05283cc7f7ce74"
+    },
+    "nt_server_online_offline.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "8d9da4bc0e49a50e09ac9f7e56789d39"
+    },
+    "nt_server_online_path_optional.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "3481356f5795aea3bee1d00bb9287d30"
+    },
+    "nt_server_online_players.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "0359b48cefe9ced82c7a000ef90ec96a"
+    },
+    "nt_server_online_players_field_required.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "de5a23dbf9c3f9dde17f6cc477eb3ace"
+    },
+    "nt_server_online_servers.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "ac659513b2353187192e88c5d1988228"
+    },
+    "nt_server_online_servers_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d6cc510af529466368ede13581c17357"
+    },
+    "nt_server_online_show_address.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "89d4b868290b14464e1dc9662fff34a4"
+    },
+    "nt_server_online_show_bar.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "c7d962ff7caa7a0c93a597c8801851d3"
+    },
+    "nt_server_online_show_max.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "85c60d37553bcbacc1cfbe9c13c1ff0b"
+    },
+    "nt_server_online_show_status.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "65ad8eb103ce3020ca3cc9608a6c0c1e"
+    },
+    "nt_server_online_show_total.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "9a49cf6dd2206ec7a0f4e11c77a60116"
+    },
+    "nt_server_online_state_online_value.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "a9bcead0bc9fbfd91408f942d6f68945"
+    },
+    "nt_server_online_state_online_value_explain.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "b6b644f095d103eeee7ff5a959dff55c"
+    },
+    "nt_server_online_total.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "1e3eaf4b88e1a327a37334b50960194d"
+    },
+    "option.ntServerOnlineInterval.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "5aa9e56afd2d3053d8df04f251f7ffa8"
+    },
+    "option.ntServerOnlineTimeout.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "db669c6377ab90eef78800a48fd4a453"
+    },
+    "option_explain.ntServerOnlineInterval.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "15d35256d9f9667a503e3facc0f77785"
+    },
+    "option_explain.ntServerOnlineTimeout.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "10ced613fedb62ca13ec78febe15d769"
+    },
+    "option_group.ntServerOnline.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "8752f508934e876645a8221e135784bb"
+    },
+    "option_group_description.ntServerOnline.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "acf1d263452923d3ad8c7be99314de69"
+    },
+    "style_prop.ntServerOnlineBarColor.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "112b6d46ca3da8d2d4f01884af62b626"
+    },
+    "style_prop.ntServerOnlineBarHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d3079c5ff5be6e9ab9295c78ec940098"
+    },
+    "style_prop.ntServerOnlineOfflineColor.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "a24779f09feb6e02a1810333451c7402"
+    },
+    "style_prop.ntServerOnlineOnlineColor.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "039b3557ff7a5b90b468cff73d20ceac"
+    },
+    "style_prop_desc.ntServerOnlineBarColor.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.ntServerOnlineBarHeight.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.ntServerOnlineOfflineColor.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_desc.ntServerOnlineOnlineColor.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "style_prop_group.ntServerOnline.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "8752f508934e876645a8221e135784bb"
+    },
+    "style_prop_group_desc.ntServerOnline.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "12bfa70f3e564ce23aa12227d2793cb4"
+    },
+    "widget_def.nt_server_online.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "274d44fb97a399a355f947cb003200b1"
+    },
+    "widget_def_desc.nt_server_online.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "be3d7b4ca68ed43a9a5cc23d78c96f47"
+    }
+}

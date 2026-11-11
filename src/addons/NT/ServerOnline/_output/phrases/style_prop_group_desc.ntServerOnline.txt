@@ -1,0 +1,1 @@
+Colors of the game server online widget.

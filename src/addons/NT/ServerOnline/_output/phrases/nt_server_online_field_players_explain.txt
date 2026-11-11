@@ -1,0 +1,1 @@
+Names of the fields in the JSON response. Use dots for nested fields, for example <code>stats.players</code>. If the player count field holds a list of players, its length is used.

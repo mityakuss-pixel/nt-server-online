@@ -1,0 +1,19 @@
+{
+    "legacy_addon_id": "",
+    "title": "[nt] Server Online",
+    "description": "Widget with the current player count of your game servers, read from a JSON API.",
+    "version_id": 1000070,
+    "version_string": "1.0.0",
+    "dev": "NT",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": {
+        "XF": [
+            2030070,
+            "XenForo 2.3.0+"
+        ]
+    },
+    "icon": "fa-signal"
+}

@@ -1,0 +1,17 @@
+{
+    "admin/widget_def_options_nt_server_online.html": {
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "9fd069edd2c24084724ed46c839a8f14"
+    },
+    "public/nt_server_online.less": {
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d10199a6a5a332e83521ef4acf156879"
+    },
+    "public/nt_server_online_widget.html": {
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "d17b3a2e28c7d2db1641bc1df019e6bc"
+    }
+}
