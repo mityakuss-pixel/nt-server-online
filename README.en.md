@@ -62,7 +62,7 @@ RAGE Multiplayer has no open query protocol, so such servers are connected throu
 1. Download `NT-ServerOnline-1.0.1.zip` from the [releases page](https://github.com/mityakuss-pixel/nt-server-online/releases/latest).
 2. In the admin control panel open **Add-ons → Install/upgrade from archive** and choose the archive.
 
-A Russian translation is available as `NT-ServerOnline-1.0.1-ru.zip`. Unpack it and import the file via **Appearance → Languages → Import language** over your Russian language.
+A Russian translation is available as `language-Russian-(RU)-NT-ServerOnline.zip`. Unpack it and import the file via **Appearance → Languages → Import language** over your Russian language.
 
 ## Configuration
 
