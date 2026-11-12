@@ -1,1 +1,1 @@
-The API did not respond. {detail}
+The server did not respond. {detail}

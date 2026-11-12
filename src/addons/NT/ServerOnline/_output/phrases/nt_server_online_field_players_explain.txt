@@ -1,1 +1,1 @@
-Names of the fields in the JSON response. Use dots for nested fields, for example <code>stats.players</code>. If the player count field holds a list of players, its length is used.
+The fields below are used by JSON API servers only. Enter the names of the fields in the JSON response and use dots for nested fields, for example <code>stats.players</code>. If the player count field holds a list of players, its length is used.

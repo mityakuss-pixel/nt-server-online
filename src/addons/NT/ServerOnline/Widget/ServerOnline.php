@@ -5,12 +5,18 @@ declare(strict_types=1);
 namespace NT\ServerOnline\Widget;
 
 use NT\ServerOnline\Repository\ServerStatusRepository;
-use NT\ServerOnline\Service\StatusFetcherService;
+use NT\ServerOnline\Source\AbstractSource;
 use XF\Http\Request;
 use XF\Widget\AbstractWidget;
 
 class ServerOnline extends AbstractWidget
 {
+	protected const BLOCKING_ERRORS = [
+		AbstractSource::ERROR_JSON,
+		AbstractSource::ERROR_FIELD,
+		AbstractSource::ERROR_ADDRESS,
+	];
+
 	protected $defaultOptions = [
 		'servers' => [],
 		'path_players' => 'players',
@@ -59,6 +65,7 @@ class ServerOnline extends AbstractWidget
 	public function verifyOptions(Request $request, array &$options, &$error = null)
 	{
 		$filterer = $this->app->inputFilterer();
+		$statusRepo = $this->getStatusRepo();
 
 		$options = $filterer->filterArray($options, [
 			'servers' => 'array',
@@ -79,9 +86,11 @@ class ServerOnline extends AbstractWidget
 		]);
 
 		$servers = [];
+		$hasJson = false;
 		foreach ($options['servers'] AS $server)
 		{
 			$server = $filterer->filterArray(is_array($server) ? $server : [], [
+				'type' => 'str',
 				'url' => 'str',
 				'name' => 'str',
 				'root' => 'str',
@@ -90,11 +99,27 @@ class ServerOnline extends AbstractWidget
 			{
 				continue;
 			}
-			if (!$this->isHttpUrl($server['url']))
-			{
-				$error = \XF::phrase('nt_server_online_invalid_url_x', ['url' => $server['url']]);
 
-				return false;
+			$server['type'] = $statusRepo->getServerType($server);
+			if ($server['type'] === ServerStatusRepository::TYPE_JSON)
+			{
+				$hasJson = true;
+				if (!$this->isHttpUrl($server['url']))
+				{
+					$error = \XF::phrase('nt_server_online_invalid_url_x', ['url' => $server['url']]);
+
+					return false;
+				}
+			}
+			else
+			{
+				$server['root'] = '';
+				if (!$statusRepo->getSourceHandler($server['type'])->parseAddress($server['url']))
+				{
+					$error = \XF::phrase('nt_server_online_invalid_address_x', ['address' => $server['url']]);
+
+					return false;
+				}
 			}
 
 			$servers[] = $server;
@@ -107,7 +132,7 @@ class ServerOnline extends AbstractWidget
 
 			return false;
 		}
-		if ($options['path_players'] === '')
+		if ($hasJson && $options['path_players'] === '')
 		{
 			$error = \XF::phrase('nt_server_online_players_field_required');
 
@@ -120,11 +145,10 @@ class ServerOnline extends AbstractWidget
 			return false;
 		}
 
-		$statusRepo = $this->getStatusRepo();
 		$sources = $statusRepo->getSources($options);
 		foreach ($statusRepo->refresh($sources) AS $key => $result)
 		{
-			if (in_array($result['error'], [StatusFetcherService::ERROR_JSON, StatusFetcherService::ERROR_FIELD], true))
+			if (in_array($result['error'], static::BLOCKING_ERRORS, true))
 			{
 				$error = \XF::phrase('nt_server_online_check_failed_x', [
 					'url' => $this->getSourceUrl($sources, $key),
@@ -152,7 +176,14 @@ class ServerOnline extends AbstractWidget
 			}
 			unset($server);
 
+			$types = [];
+			foreach (array_keys(ServerStatusRepository::TYPES) AS $type)
+			{
+				$types[$type] = \XF::phrase('nt_server_online_type.' . $type);
+			}
+
 			$params['servers'] = $servers;
+			$params['types'] = $types;
 			$params['nextCounter'] = count($this->options['servers']);
 		}
 

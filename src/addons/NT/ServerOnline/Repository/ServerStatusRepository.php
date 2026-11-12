@@ -5,6 +5,14 @@ declare(strict_types=1);
 namespace NT\ServerOnline\Repository;
 
 use NT\ServerOnline\Service\StatusFetcherService;
+use NT\ServerOnline\Source\AbstractSource;
+use NT\ServerOnline\Source\FiveM;
+use NT\ServerOnline\Source\Json;
+use NT\ServerOnline\Source\MinecraftBedrock;
+use NT\ServerOnline\Source\MinecraftJava;
+use NT\ServerOnline\Source\Mta;
+use NT\ServerOnline\Source\Samp;
+use NT\ServerOnline\Source\SourceEngine;
 use XF\Finder\WidgetFinder;
 use XF\Mvc\Entity\Repository;
 
@@ -14,11 +22,45 @@ class ServerStatusRepository extends Repository
 	public const WIDGET_DEFINITION = 'nt_server_online';
 	public const CACHE_KEY = 'servers';
 	public const MAX_SERVERS = 20;
+	public const TYPE_JSON = 'json';
+	public const TYPES = [
+		'json' => Json::class,
+		'source' => SourceEngine::class,
+		'minecraft' => MinecraftJava::class,
+		'bedrock' => MinecraftBedrock::class,
+		'samp' => Samp::class,
+		'mta' => Mta::class,
+		'fivem' => FiveM::class,
+	];
 
 	protected const MIN_INTERVAL = 60;
 	protected const MIN_GRACE = 180;
 	protected const STALE_AFTER = 900;
 	protected const CRON_DRIFT = 5;
+
+	protected $sourceHandlers = [];
+
+	public function getSourceHandler(string $type): AbstractSource
+	{
+		if (!isset(static::TYPES[$type]))
+		{
+			$type = static::TYPE_JSON;
+		}
+		if (!isset($this->sourceHandlers[$type]))
+		{
+			$class = $this->app()->extendClass(static::TYPES[$type]);
+			$this->sourceHandlers[$type] = new $class();
+		}
+
+		return $this->sourceHandlers[$type];
+	}
+
+	public function getServerType(array $server): string
+	{
+		$type = (string) ($server['type'] ?? '');
+
+		return isset(static::TYPES[$type]) ? $type : static::TYPE_JSON;
+	}
 
 	public function getSources(array $options): array
 	{
@@ -31,17 +73,29 @@ class ServerStatusRepository extends Repository
 				continue;
 			}
 
-			$source = [
-				'url' => $url,
-				'root' => trim((string) ($server['root'] ?? '')),
-				'players' => trim((string) ($options['path_players'] ?? '')),
-				'max' => trim((string) ($options['path_max'] ?? '')),
-				'name' => trim((string) ($options['path_name'] ?? '')),
-				'state' => trim((string) ($options['path_state'] ?? '')),
-				'online_value' => trim((string) ($options['state_online'] ?? '')),
-				'address' => trim((string) ($options['path_address'] ?? '')),
-			];
-			$source['key'] = md5(json_encode(array_values($source)));
+			$type = $this->getServerType($server);
+			if ($type === static::TYPE_JSON)
+			{
+				$source = [
+					'url' => $url,
+					'root' => trim((string) ($server['root'] ?? '')),
+					'players' => trim((string) ($options['path_players'] ?? '')),
+					'max' => trim((string) ($options['path_max'] ?? '')),
+					'name' => trim((string) ($options['path_name'] ?? '')),
+					'state' => trim((string) ($options['path_state'] ?? '')),
+					'online_value' => trim((string) ($options['state_online'] ?? '')),
+					'address' => trim((string) ($options['path_address'] ?? '')),
+				];
+				$source['key'] = md5(json_encode(array_values($source)));
+			}
+			else
+			{
+				$source = [
+					'url' => $url,
+					'key' => md5($type . '|' . strtolower($url)),
+				];
+			}
+			$source['type'] = $type;
 			$source['label'] = trim((string) ($server['name'] ?? ''));
 
 			$sources[] = $source;
@@ -109,13 +163,17 @@ class ServerStatusRepository extends Repository
 
 		$dueBefore = \XF::$time - $this->getInterval() + static::CRON_DRIFT;
 		$due = [];
+		$order = [];
 		foreach ($sources AS $key => $source)
 		{
-			if (($current[$key]['checked'] ?? 0) <= $dueBefore)
+			$checked = $current[$key]['checked'] ?? 0;
+			if ($checked <= $dueBefore)
 			{
-				$due[] = $source;
+				$due[$key] = $source;
+				$order[$key] = $checked;
 			}
 		}
+		array_multisort($order, SORT_ASC, $due);
 
 		$this->refresh($due);
 	}
@@ -135,7 +193,8 @@ class ServerStatusRepository extends Repository
 			$servers[] = [
 				'name' => $source['label'] !== ''
 					? $source['label']
-					: ($status['name'] ?? parse_url($source['url'], PHP_URL_HOST)),
+					: ($status['name'] ?? $this->getFallbackName($source)),
+				'type' => $source['type'],
 				'online' => $online,
 				'players' => $players,
 				'max' => $max,
@@ -148,6 +207,18 @@ class ServerStatusRepository extends Repository
 		}
 
 		return $servers;
+	}
+
+	protected function getFallbackName(array $source): string
+	{
+		if ($source['type'] === static::TYPE_JSON)
+		{
+			return (string) parse_url($source['url'], PHP_URL_HOST);
+		}
+
+		$address = $this->getSourceHandler($source['type'])->parseAddress($source['url']);
+
+		return $address ? $address['host'] : $source['url'];
 	}
 
 	protected function isOnline(array $status): bool

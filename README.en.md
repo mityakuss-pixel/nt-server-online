@@ -4,7 +4,7 @@
 
 # [nt] Server Online
 
-A XenForo 2.3 widget with the player count of your game servers: players online, the limit, a fill bar and the address to connect to.
+A XenForo 2.3 widget with the player count of your game servers: Counter-Strike, Minecraft, SA-MP, MTA, FiveM and any project with a JSON API.
 
 [![XenForo](https://img.shields.io/badge/XenForo-2.3%2B-2577b1?style=flat-square)](https://xenforo.com)
 [![Release](https://img.shields.io/github/v/release/mityakuss-pixel/nt-server-online?style=flat-square&label=Release&color=2577b1)](https://github.com/mityakuss-pixel/nt-server-online/releases/latest)
@@ -15,21 +15,35 @@ A XenForo 2.3 widget with the player count of your game servers: players online,
 
 <picture>
 	<source media="(prefers-color-scheme: dark)" srcset="docs/wide-dark.png">
-	<img src="docs/wide-light.png" width="840" alt="The widget with four servers above the forum list">
+	<img src="docs/wide-light.png" width="840" alt="The widget with four servers of different games above the forum list">
 </picture>
 
 </div>
 
 ## Features
 
-- **Reads a JSON API.** The add-on is not tied to a game: it needs an address that returns the server status as JSON and the names of the fields in the response.
-- **Several servers in one widget**, up to 20, with an optional total under the list.
-- **Status indicator.** A server is online according to a field in the response or, when there is no such field, as long as the API responds.
-- **Player limit and a fill bar.**
+- **Queries servers directly.** Choose the game and enter the address; the add-on asks the server itself for the player count, the limit and the name.
+- **Reads a JSON API** when the project has its own status address. This is how RAGE MP and any other servers are connected.
+- **Several servers in one widget**, up to 20, of different games if needed, with an optional total under the list.
+- **Status indicator**, player limit and a fill bar.
 - **Server address with a copy button.**
 - **A link button** under the list, for example to a "How to start playing" page.
 - **Any widget position.** Servers are stacked in the sidebar and placed in a row in wide positions.
 - **Light and dark style variations.** Colors are set in style properties.
+
+### Supported games
+
+| Type in the options | What it covers | Default port |
+|---|---|---|
+| Counter-Strike, Source | CS 1.6, CS2 and other Source and GoldSrc games | 27015 |
+| Minecraft Java | Java Edition servers, SRV records included | 25565 |
+| Minecraft Bedrock | Bedrock Edition servers | 19132 |
+| SA-MP, CR-MP, open.mp | Servers that speak the SA-MP query protocol | 7777 |
+| Multi Theft Auto | MTA: San Andreas servers | 22003 |
+| FiveM, RedM | Servers on the Cfx.re platform | 30120 |
+| JSON API | Any address that returns the server status as JSON | |
+
+RAGE Multiplayer has no open query protocol, so such servers are connected through the project's JSON API.
 
 <div align="center">
 <picture>
@@ -40,22 +54,23 @@ A XenForo 2.3 widget with the player count of your game servers: players online,
 
 ## Performance
 
-Forum pages never call the API. The widget reads ready data from the XenForo cache, and the requests run in the background.
+Forum pages never contact the servers. The widget reads ready data from the XenForo cache, and the queries run in the background.
 
 - A cron entry refreshes the data once a minute; the interval is an option.
-- Requests to different servers run in parallel. An address is requested once even if several widgets use it.
-- The add-on waits 3 seconds for a response (configurable) and reads at most 1 MB.
-- If the API does not respond, the widget keeps the last data for three intervals, but not less than three minutes. After that the server is shown as offline.
+- JSON API requests run in parallel. An address is requested once even if several widgets use it.
+- Game servers are queried one by one, with 6 seconds for the whole pass. Those that did not fit are queried on the next run.
+- The add-on waits 3 seconds for a response (configurable) and reads at most 1 MB from a JSON API.
+- If a server does not respond, the widget keeps the last data for three intervals, but not less than three minutes. After that the server is shown as offline.
 - The add-on adds no scripts of its own to the page.
 
 ## Requirements
 
 - XenForo 2.3.0 or later.
-- The API must be reachable from the server the forum runs on.
+- The forum server must be able to reach the game server: game protocols need outgoing UDP and TCP connections, a JSON API needs outgoing HTTP.
 
 ## Installation
 
-1. Download `NT-ServerOnline-1.0.0.zip` from the [releases page](https://github.com/mityakuss-pixel/nt-server-online/releases/latest).
+1. Download `NT-ServerOnline-1.0.1.zip` from the [releases page](https://github.com/mityakuss-pixel/nt-server-online/releases/latest).
 2. In the admin control panel open **Add-ons → Install/upgrade from archive** and choose the archive.
 3. Add the widget as described below.
 
@@ -65,14 +80,21 @@ If there is no install from archive button, unpack the archive, upload the conte
 php cmd.php xf-addon:install NT/ServerOnline
 ```
 
+The upgrade from 1.0.0 uses the same archive. Existing widgets keep working, and their servers stay on the JSON API type.
+
 ## Widget setup
 
 1. **Appearance → Widgets → Add widget**, definition **Game server online**.
 2. Set the widget key, the title and the positions.
-3. Paste the API URL into **Servers**. The name is optional: when it is empty, the name from the response is used.
-4. Save. The add-on requests the API right away. If the response is not JSON or has no player count field, the form is not saved and tells you what is missing.
+3. In **Servers** choose the game and enter the server address as `host:port`, for example `play.example.com:27015`. The default port can be left out.
+4. The name is optional: when it is empty, the name reported by the server is used.
+5. Save. The add-on queries the servers right away; the result is shown in the **Last response** row the next time you open the widget.
 
-The default field names match a response like this:
+The form is not saved when an address is malformed. If a server simply did not respond, the widget is saved and shows it as offline.
+
+### Servers with a JSON API
+
+Choose the **JSON API** type and paste the address that returns the server status. The default field names match a response like this:
 
 ```json
 {
@@ -84,7 +106,7 @@ The default field names match a response like this:
 }
 ```
 
-If your API names the fields differently, change them in the widget options:
+If your API names the fields differently, change them in the widget options. These fields do not affect servers of other types.
 
 | Option | Default | What it holds |
 |---|---|---|
@@ -95,7 +117,7 @@ If your API names the fields differently, change them in the widget options:
 | Status field | `state` | May be left empty |
 | Status value that means online | `online` | Several values can be separated with commas |
 
-Nested fields are written with dots: `stats.players`. If one address returns several servers at once, add a row for each of them and enter its path in the response, for example `data.servers.0` and `data.servers.1`.
+Nested fields are written with dots: `stats.players`. If one address returns several servers at once, add a row for each of them and enter its path in the response, for example `data.servers.0` and `data.servers.1`. If the response is not JSON or has no player count field, the form is not saved and tells you what is missing.
 
 <details>
 <summary>Widget options form</summary>
@@ -124,7 +146,7 @@ Uninstall it as usual from **Add-ons**. Its widgets, options, phrases, templates
 
 ## Development
 
-The repository mirrors the forum root: the code and `_output` are in `src/addons/NT/ServerOnline`.
+The repository mirrors the forum root: the code and `_output` are in `src/addons/NT/ServerOnline`. Each server type is a class in the `Source` folder, and the list of types is in `ServerStatusRepository::TYPES`.
 
 Copy the folder into a forum with development mode enabled, install the add-on and import `_output`:
 

@@ -7,26 +7,34 @@
 	<ul class="listPlain inputGroup-container">
 		<xf:foreach loop="$options.servers" key="$counter" value="$server">
 			<li class="inputGroup">
+				<xf:select name="options[servers][{$counter}][type]" value="{{ $server.type ?: 'json' }}" style="flex: 0 0 30%">
+					<xf:options source="$types" />
+				</xf:select>
+				<span class="inputGroup-splitter"></span>
 				<xf:textbox name="options[servers][{$counter}][url]" value="{$server.url}"
-					placeholder="{{ phrase('nt_server_online_api_url') }}" dir="ltr" style="flex: 0 0 50%" />
+					placeholder="{{ phrase('nt_server_online_api_url') }}" dir="ltr" style="flex: 1 1 0; min-width: 0" />
 				<span class="inputGroup-splitter"></span>
 				<xf:textbox name="options[servers][{$counter}][name]" value="{$server.name}"
-					placeholder="{{ phrase('nt_server_online_name_optional') }}" size="16" />
+					placeholder="{{ phrase('nt_server_online_name_optional') }}" style="flex: 0 0 19%" />
 				<span class="inputGroup-splitter"></span>
 				<xf:textbox name="options[servers][{$counter}][root]" value="{$server.root}"
-					placeholder="{{ phrase('nt_server_online_path_optional') }}" size="16" dir="ltr" />
+					placeholder="{{ phrase('nt_server_online_path_optional') }}" dir="ltr" style="flex: 0 0 15%" />
 			</li>
 		</xf:foreach>
 
 		<li class="inputGroup" data-xf-init="field-adder" data-increment-format="options[servers][{counter}]">
+			<xf:select name="options[servers][{$nextCounter}][type]" value="json" style="flex: 0 0 30%">
+				<xf:options source="$types" />
+			</xf:select>
+			<span class="inputGroup-splitter"></span>
 			<xf:textbox name="options[servers][{$nextCounter}][url]"
-				placeholder="{{ phrase('nt_server_online_api_url') }}" dir="ltr" style="flex: 0 0 50%" />
+				placeholder="{{ phrase('nt_server_online_api_url') }}" dir="ltr" style="flex: 1 1 0; min-width: 0" />
 			<span class="inputGroup-splitter"></span>
 			<xf:textbox name="options[servers][{$nextCounter}][name]"
-				placeholder="{{ phrase('nt_server_online_name_optional') }}" size="16" />
+				placeholder="{{ phrase('nt_server_online_name_optional') }}" style="flex: 0 0 19%" />
 			<span class="inputGroup-splitter"></span>
 			<xf:textbox name="options[servers][{$nextCounter}][root]"
-				placeholder="{{ phrase('nt_server_online_path_optional') }}" size="16" dir="ltr" />
+				placeholder="{{ phrase('nt_server_online_path_optional') }}" dir="ltr" style="flex: 0 0 15%" />
 		</li>
 	</ul>
 </xf:formrow>

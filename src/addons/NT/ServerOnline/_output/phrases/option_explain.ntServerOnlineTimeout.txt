@@ -1,1 +1,1 @@
-How long to wait for the API to respond, in seconds. A server that does not answer in time is shown as offline.
+How long to wait for a server to respond, in seconds. A server that does not answer in time is shown as offline.

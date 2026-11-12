@@ -1,1 +1,1 @@
-Shows the current player count of one or more game servers, read from a JSON API.
+Shows the current player count of your game servers: Counter-Strike, Minecraft, SA-MP, MTA, FiveM or any server with a JSON API.

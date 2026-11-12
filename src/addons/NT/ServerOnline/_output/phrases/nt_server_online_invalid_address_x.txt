@@ -1,0 +1,1 @@
+"{address}" is not a valid server address. Enter it as host:port, for example play.example.com:25565.

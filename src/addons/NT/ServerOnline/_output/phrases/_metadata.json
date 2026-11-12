@@ -35,6 +35,12 @@
         "version_string": "1.0.0",
         "hash": "b9987a246a537f4fe86f1f2e3d10dbdb"
     },
+    "nt_server_online_error_address.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "bed496ca8d0309aa4322139dd8c05333"
+    },
     "nt_server_online_error_field.txt": {
         "global_cache": false,
         "version_id": 1000070,
@@ -58,6 +64,12 @@
         "version_id": 1000070,
         "version_string": "1.0.0",
         "hash": "2800943f9ca3d66ab40483135725a091"
+    },
+    "nt_server_online_error_response.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "de8d07302e2620101863bddc606eecda"
     },
     "nt_server_online_field_address.txt": {
         "global_cache": false,
@@ -112,6 +124,12 @@
         "version_id": 1000070,
         "version_string": "1.0.0",
         "hash": "4d132a9d661151d9084d01f87b3b60b3"
+    },
+    "nt_server_online_invalid_address_x.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "03113ea6aef26b112d002fa732febd40"
     },
     "nt_server_online_invalid_url_x.txt": {
         "global_cache": false,
@@ -244,6 +262,48 @@
         "version_id": 1000070,
         "version_string": "1.0.0",
         "hash": "1e3eaf4b88e1a327a37334b50960194d"
+    },
+    "nt_server_online_type.bedrock.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "9bba510b7bfb10d4b50729425f73edc1"
+    },
+    "nt_server_online_type.fivem.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "e81a5f5d35713d8f4860d5556ac31444"
+    },
+    "nt_server_online_type.json.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "844d2bf902d0d3ac691f48320b6034b2"
+    },
+    "nt_server_online_type.minecraft.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "338579aa55a3a071c9a5766f35e742ba"
+    },
+    "nt_server_online_type.mta.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "e6b2c29c5bdf3fdacfdfeb4e4afc283a"
+    },
+    "nt_server_online_type.samp.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "13f603fecdba850a3dc6e076aab2334a"
+    },
+    "nt_server_online_type.source.txt": {
+        "global_cache": false,
+        "version_id": 1000070,
+        "version_string": "1.0.0",
+        "hash": "9c7ecc75208ebff6c370cea7273d866f"
     },
     "option.ntServerOnlineInterval.txt": {
         "global_cache": false,
